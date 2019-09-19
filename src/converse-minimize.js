@@ -7,6 +7,7 @@
  * @module converse-minimize
  */
 import "converse-chatview";
+import { Model } from 'skeletor.js/src/model.js';
 import { Overview } from "backbone.overview";
 import converse from "@converse/headless/converse-core";
 import tpl_chatbox_minimize from "templates/chatbox_minimize.html";
@@ -531,7 +532,7 @@ converse.plugins.add('converse-minimize', {
         });
 
 
-        _converse.MinimizedChatsToggle = Backbone.Model.extend({
+        _converse.MinimizedChatsToggle = Model.extend({
             defaults: {
                 'collapsed': false,
                 'num_minimized': 0,

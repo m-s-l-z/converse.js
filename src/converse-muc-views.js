@@ -9,6 +9,7 @@ import "backbone.vdomview";
 import "formdata-polyfill";
 import "@converse/headless/utils/muc";
 import { get, head, isString, isUndefined, pick } from "lodash";
+import { Model } from 'skeletor.js/src/model.js';
 import { OrderedListView } from "backbone.overview";
 import converse from "@converse/headless/converse-core";
 import log from "@converse/headless/log";
@@ -638,7 +639,7 @@ converse.plugins.add('converse-muc-views', {
 
 
         /**
-         * Backbone.NativeView which renders a groupchat, based upon
+         * NativeView which renders a groupchat, based upon
          * { @link _converse.ChatBoxView } for normal one-on-one chat boxes.
          * @class
          * @namespace _converse.ChatRoomView
@@ -1032,7 +1033,7 @@ converse.plugins.add('converse-muc-views', {
                     return;
                 }
                 if (isUndefined(this.model.modtools_modal)) {
-                    const model = new Backbone.Model({'affiliation': affiliation});
+                    const model = new Model({'affiliation': affiliation});
                     this.modtools_modal = new _converse.ModeratorToolsModal({'model': model, 'chatroomview': this});
                 } else {
                     this.modtools_modal.set('affiliation', affiliation);
@@ -1642,7 +1643,7 @@ converse.plugins.add('converse-muc-views', {
 
                 if (!this.password_form) {
                     this.password_form = new _converse.MUCPasswordForm({
-                        'model': new Backbone.Model({
+                        'model': new Model({
                             'validation_message': message
                         }),
                         'chatroomview': this,

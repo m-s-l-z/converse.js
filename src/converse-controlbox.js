@@ -12,6 +12,7 @@ import "formdata-polyfill";
 import bootstrap from "bootstrap.native";
 import converse from "@converse/headless/converse-core";
 import { get } from "lodash";
+import { Model } from 'skeletor.js/src/model.js';
 import log from "@converse/headless/log";
 import tpl_brand_heading from "templates/converse_brand_heading.html";
 import tpl_controlbox from "templates/controlbox.html";
@@ -355,7 +356,7 @@ converse.plugins.add('converse-controlbox', {
             }
         });
 
-        _converse.LoginPanelModel = Backbone.Model.extend({
+        _converse.LoginPanelModel = Model.extend({
             defaults: {
                 // Passed-by-reference. Fine in this case because there's
                 // only one such model.
