@@ -10,7 +10,8 @@ import "formdata-polyfill";
 import "@converse/headless/utils/muc";
 import { get, head, isString, isUndefined, pick } from "lodash";
 import { Model } from 'skeletor.js/src/model.js';
-import { OrderedListView } from "backbone.overview";
+import { OrderedListView } from "skeletor.js/src/overview";
+import { View } from "skeletor.js/src/view";
 import converse from "@converse/headless/converse-core";
 import log from "@converse/headless/log";
 import tpl_add_chatroom_modal from "templates/add_chatroom_modal.html";
@@ -2004,12 +2005,12 @@ converse.plugins.add('converse-muc-views', {
 
 
         /**
-         * Backbone.NativeView which renders MUC section of the control box.
+         * View which renders MUC section of the control box.
          * @class
          * @namespace _converse.RoomsPanel
          * @memberOf _converse
          */
-        _converse.RoomsPanel = Backbone.NativeView.extend({
+        _converse.RoomsPanel = View.extend({
             tagName: 'div',
             className: 'controlbox-section',
             id: 'chatrooms',

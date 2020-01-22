@@ -13,6 +13,7 @@ import bootstrap from "bootstrap.native";
 import converse from "@converse/headless/converse-core";
 import { get } from "lodash";
 import { Model } from 'skeletor.js/src/model.js';
+import { View } from "skeletor.js/src/view";
 import log from "@converse/headless/log";
 import tpl_brand_heading from "templates/converse_brand_heading.html";
 import tpl_controlbox from "templates/controlbox.html";
@@ -477,7 +478,7 @@ converse.plugins.add('converse-controlbox', {
         });
 
 
-        _converse.ControlBoxPane = Backbone.NativeView.extend({
+        _converse.ControlBoxPane = View.extend({
             tagName: 'div',
             className: 'controlbox-pane',
 
@@ -493,7 +494,7 @@ converse.plugins.add('converse-controlbox', {
         });
 
 
-        _converse.ControlBoxToggle = Backbone.NativeView.extend({
+        _converse.ControlBoxToggle = View.extend({
             tagName: 'a',
             className: 'toggle-controlbox hidden',
             id: 'toggle-controlbox',

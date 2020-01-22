@@ -12,7 +12,7 @@ import "converse-modal";
 import "formdata-polyfill";
 import { compact, debounce, has, isString, uniq, without } from "lodash";
 import { Model } from 'skeletor.js/src/model.js';
-import { OrderedListView } from "backbone.overview";
+import { OrderedListView } from "skeletor.js/src/overview";
 import SHA1 from 'strophe.js/src/sha1';
 import converse from "@converse/headless/converse-core";
 import log from "@converse/headless/log";

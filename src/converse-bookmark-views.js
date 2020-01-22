@@ -9,7 +9,6 @@
  * @description
  * Converse.js plugin which adds views for XEP-0048 bookmarks
  */
-import "backbone.nativeview";
 import "@converse/headless/converse-muc";
 import { Model } from 'skeletor.js/src/model.js';
 import converse from "@converse/headless/converse-core";

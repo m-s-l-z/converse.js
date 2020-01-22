@@ -8,7 +8,8 @@
  */
 import "converse-chatview";
 import { Model } from 'skeletor.js/src/model.js';
-import { Overview } from "backbone.overview";
+import { Overview } from "skeletor.js/src/overview";
+import { View } from "skeletor.js/src/view";
 import converse from "@converse/headless/converse-core";
 import tpl_chatbox_minimize from "templates/chatbox_minimize.html";
 import tpl_chats_panel from "templates/chats_panel.html";
@@ -383,7 +384,7 @@ converse.plugins.add('converse-minimize', {
 
         _converse.api.promises.add('minimizedChatsInitialized');
 
-        _converse.MinimizedChatBoxView = Backbone.NativeView.extend({
+        _converse.MinimizedChatBoxView = View.extend({
             tagName: 'div',
             events: {
                 'click .close-chatbox-button': 'close',
@@ -541,7 +542,7 @@ converse.plugins.add('converse-minimize', {
         });
 
 
-        _converse.MinimizedChatsToggleView = Backbone.NativeView.extend({
+        _converse.MinimizedChatsToggleView = View.extend({
             _setElement (){
                 this.el = _converse.root.querySelector('#toggle-minimized-chats');
             },
