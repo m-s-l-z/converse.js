@@ -12,9 +12,9 @@ import "converse-message-view";
 import "converse-modal";
 import { debounce, get, isString } from "lodash";
 import { Overview } from "skeletor.js/src/overview";
-import { View } from "skeletor.js/src/view";
 import converse from "@converse/headless/converse-core";
 import log from "@converse/headless/log";
+import user_details_modal from "components/user_details_modal.js";
 import tpl_chatbox from "templates/chatbox.html";
 import tpl_chatbox_head from "templates/chatbox_head.html";
 import tpl_chatbox_message_form from "templates/chatbox_message_form.html";
@@ -27,7 +27,6 @@ import tpl_spoiler_button from "templates/spoiler_button.html";
 import tpl_status_message from "templates/status_message.html";
 import tpl_toolbar from "templates/toolbar.html";
 import tpl_toolbar_fileupload from "templates/toolbar_fileupload.html";
-import tpl_user_details_modal from "templates/user_details_modal.html";
 import xss from "xss/dist/xss";
 
 
@@ -154,7 +153,7 @@ converse.plugins.add('converse-chatview', {
             toHTML () {
                 const vcard = get(this.model, 'vcard'),
                       vcard_json = vcard ? vcard.toJSON() : {};
-                return tpl_user_details_modal(Object.assign(
+                return user_details_modal(Object.assign(
                     this.model.toJSON(),
                     vcard_json, {
                     '__': __,
@@ -616,7 +615,7 @@ converse.plugins.add('converse-chatview', {
              * content area of the chat box.
              * @private
              * @method _converse.ChatBoxView#insertMessage
-             * @param { Backbone.View } message - The message Backbone.View
+             * @param { View } message - The message View
              */
             insertMessage (view) {
                 if (view.model.get('type') === 'error') {
@@ -1386,8 +1385,7 @@ converse.plugins.add('converse-chatview', {
                   * Get the view of an already open chat.
                   * @method _converse.api.chatviews.get
                   * @param { Array.string | string } jids
-                  * @returns {ChatBoxView} A [Backbone.View](http://backbonejs.org/#View) instance.
-                  *     The chat should already be open, otherwise `undefined` will be returned.
+                  * @returns { _converse.ChatBoxView|undefined }  The chat should already be open, otherwise `undefined` will be returned.
                   * @example
                   * // To return a single view, provide the JID of the contact:
                   * _converse.api.chatviews.get('buddy@example.com')

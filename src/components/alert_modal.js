@@ -1,0 +1,17 @@
+import { html } from "lit-html";
+import { modal_header_close_button } from "./buttons"
+
+
+export default (o) => html`
+  <div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header ${o.level}">
+          <h5 class="modal-title">${o.title}</h5>
+          ${modal_header_close_button}
+        </div>
+        <div class="modal-body">${ o.messages.map(message => `<p>${message}</p>`) }</div>
+      </div>
+    </div>
+  </div>
+`;

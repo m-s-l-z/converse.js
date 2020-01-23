@@ -6,16 +6,16 @@
 /**
  * @module converse-modal
  */
-import "backbone.vdomview";
 import bootstrap from "bootstrap.native";
 import converse from "@converse/headless/converse-core";
+import  { HTMLView } from 'skeletor.js/src/htmlview.js';
 import { Model } from 'skeletor.js/src/model.js';
 import { isString } from "lodash";
+import alert_modal from "components/alert_modal.js";
 import tpl_alert from "templates/alert.html";
-import tpl_alert_modal from "templates/alert_modal.html";
 import tpl_prompt from "templates/prompt.html";
 
-const { Backbone, sizzle } = converse.env;
+const { sizzle } = converse.env;
 const u = converse.env.utils;
 
 
@@ -25,15 +25,17 @@ converse.plugins.add('converse-modal', {
         const { _converse } = this;
         const { __ } = _converse;
 
-        _converse.BootstrapModal = Backbone.VDOMView.extend({
+        _converse.BootstrapModal = HTMLView.extend({
 
             events: {
                 'click  .nav-item .nav-link': 'switchTab'
             },
 
             initialize () {
-                this.render().insertIntoDOM();
-                this.modal = new bootstrap.Modal(this.el, {
+                this.render()
+                this.insertIntoDOM();
+                const Modal = bootstrap.Modal;
+                this.modal = new Modal(this.el.firstElementChild, {
                     backdrop: 'static',
                     keyboard: true
                 });
@@ -138,8 +140,7 @@ converse.plugins.add('converse-modal', {
             },
 
             toHTML () {
-                return tpl_alert_modal(
-                    Object.assign({__}, this.model.toJSON()));
+                return alert_modal(Object.assign({__}, this.model.toJSON()));
             }
         });
 
