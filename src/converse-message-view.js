@@ -73,6 +73,7 @@ converse.plugins.add('converse-message-view', {
         });
 
         _converse.MessageVersionsModal = _converse.BootstrapModal.extend({
+            id: "message-versions-modal",
             toHTML () {
                 return message_versions_modal(this.model.toJSON());
             }

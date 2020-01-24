@@ -226,7 +226,7 @@ converse.plugins.add('converse-muc-views', {
 
 
         _converse.ModeratorToolsModal = _converse.BootstrapModal.extend({
-
+            id: "converse-modtools-modal",
             events: {
                 'submit .affiliation-form': 'assignAffiliation',
                 'submit .role-form': 'assignRole',
@@ -388,6 +388,7 @@ converse.plugins.add('converse-muc-views', {
 
 
         _converse.ListChatRoomsModal = _converse.BootstrapModal.extend({
+            id: "list-chatrooms-modal",
 
             events: {
                 'submit form': 'showRooms',
@@ -519,6 +520,7 @@ converse.plugins.add('converse-muc-views', {
 
 
         _converse.AddChatRoomModal = _converse.BootstrapModal.extend({
+            id: 'add-chatroom-modal',
 
             events: {
                 'submit form.add-chatroom': 'openChatRoom',
@@ -612,6 +614,7 @@ converse.plugins.add('converse-muc-views', {
 
 
         _converse.RoomDetailsModal = _converse.BootstrapModal.extend({
+            id: "room-details-modal",
 
             initialize () {
                 _converse.BootstrapModal.prototype.initialize.apply(this, arguments);

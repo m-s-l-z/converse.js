@@ -22,21 +22,20 @@ const second_subtitle = __(
 
 
 export default (o) => html`
-    <div class="modal" id="modal-status-change" tabindex="-1" role="dialog" aria-labelledby="changeStatusModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="changeStatusModalLabel">${modal_title}</h5>
-                    ${modal_header_close_button}
-                </div>
-                <div class="modal-body">
-                    <div class="container brand-heading-container">
-                        <h6 class="brand-heading">Converse</h6>
-                        <p class="brand-subtitle">${o.version_name}</p>
-                        <p class="brand-subtitle">${unsafeHTML(xss.filterXSS(first_subtitle, {'whiteList': {'a': []}}))}</p>
-                        <p class="brand-subtitle">${unsafeHTML(xss.filterXSS(second_subtitle, {'whiteList': {'a': []}}))}</p>
-                    </div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="changeStatusModalLabel">${modal_title}</h5>
+                ${modal_header_close_button}
+            </div>
+            <div class="modal-body">
+                <div class="container brand-heading-container">
+                    <h6 class="brand-heading">Converse</h6>
+                    <p class="brand-subtitle">${o.version_name}</p>
+                    <p class="brand-subtitle">${unsafeHTML(xss.filterXSS(first_subtitle, {'whiteList': {'a': []}}))}</p>
+                    <p class="brand-subtitle">${unsafeHTML(xss.filterXSS(second_subtitle, {'whiteList': {'a': []}}))}</p>
                 </div>
             </div>
         </div>
-    </div>`
+    </div>
+`;

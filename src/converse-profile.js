@@ -36,6 +36,7 @@ converse.plugins.add('converse-profile', {
 
 
         _converse.ProfileModal = _converse.BootstrapModal.extend({
+            id: "user-profile-modal",
             events: {
                 'change input[type="file"': "updateFilePreview",
                 'click .change-avatar': "openFileSelection",
@@ -129,6 +130,7 @@ converse.plugins.add('converse-profile', {
 
 
         _converse.ChatStatusModal = _converse.BootstrapModal.extend({
+            id: "modal-status-change",
             events: {
                 "submit form#set-xmpp-status": "onFormSubmitted",
                 "click .clear-input": "clearStatusMessage"
@@ -180,6 +182,7 @@ converse.plugins.add('converse-profile', {
         });
 
         _converse.ClientInfoModal = _converse.BootstrapModal.extend({
+            id: "converse-client-info-modal",
 
             toHTML () {
                 return client_info_modal(

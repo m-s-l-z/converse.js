@@ -94,9 +94,9 @@
                         `<c hash="sha-1" node="https://conversejs.org" ver="Hxbsr5fazs62i+O0GxIXf2OEDNs=" xmlns="http://jabber.org/protocol/caps"/>`+
                         `</presence>`)
 
-            await u.waitUntil(() => modal.el.getAttribute('aria-hidden') === "true");
+            await u.waitUntil(() => modal.el.firstElementChild.getAttribute('aria-hidden') === "true");
             cbview.el.querySelector('.change-status').click()
-            await u.waitUntil(() => modal.el.getAttribute('aria-hidden') === "false", 1000);
+            await u.waitUntil(() => modal.el.firstElementChild.getAttribute('aria-hidden') === "false", 1000);
             modal.el.querySelector('label[for="radio-busy"]').click(); // Change status to "dnd"
             modal.el.querySelector('[type="submit"]').click();
             expect(_converse.connection.send.calls.mostRecent().args[0].toLocaleString())

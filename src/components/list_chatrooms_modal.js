@@ -19,19 +19,17 @@ const form = (o) => html`
 
 
 export default (o) => html`
-    <div class="modal" id="list-chatrooms-modal" tabindex="-1" role="dialog" aria-labelledby="list-chatrooms-modal-label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="list-chatrooms-modal-label">${i18n_list_chatrooms}</h5>
-                    ${modal_header_close_button}
-                </div>
-                <div class="modal-body d-flex flex-column">
-                    ${o.show_form ? form(o) : '' }
-                    <ul class="available-chatrooms list-group"></ul>
-                </div>
-                <div class="modal-footer">${modal_close_button}</div>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="list-chatrooms-modal-label">${i18n_list_chatrooms}</h5>
+                ${modal_header_close_button}
             </div>
+            <div class="modal-body d-flex flex-column">
+                ${o.show_form ? form(o) : '' }
+                <ul class="available-chatrooms list-group"></ul>
+            </div>
+            <div class="modal-footer">${modal_close_button}</div>
         </div>
     </div>
 `;

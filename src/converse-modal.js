@@ -11,9 +11,9 @@ import converse from "@converse/headless/converse-core";
 import  { HTMLView } from 'skeletor.js/src/htmlview.js';
 import { Model } from 'skeletor.js/src/model.js';
 import { isString } from "lodash";
+import alert from "components/alert.js";
 import alert_modal from "components/alert_modal.js";
-import tpl_alert from "templates/alert.html";
-import tpl_prompt from "templates/prompt.html";
+import prompt_modal from "components/prompt.js";
 
 const { sizzle } = converse.env;
 const u = converse.env.utils;
@@ -26,16 +26,23 @@ converse.plugins.add('converse-modal', {
         const { __ } = _converse;
 
         _converse.BootstrapModal = HTMLView.extend({
-
+            className: "modal",
             events: {
                 'click  .nav-item .nav-link': 'switchTab'
             },
 
             initialize () {
                 this.render()
+
+                this.el.setAttribute('tabindex', '-1');
+                this.el.setAttribute('role', 'dialog');
+                this.el.setAttribute('aria-hidden', 'true');
+                const label_id = this.el.querySelector('.modal-title').getAttribute('id');
+                label_id && this.el.setAttribute('aria-labelledby', label_id);
+
                 this.insertIntoDOM();
                 const Modal = bootstrap.Modal;
-                this.modal = new Modal(this.el.firstElementChild, {
+                this.modal = new Modal(this.el, {
                     backdrop: 'static',
                     keyboard: true
                 });
@@ -62,7 +69,7 @@ converse.plugins.add('converse-modal', {
                 const body = this.el.querySelector('.modal-body');
                 body.insertAdjacentHTML(
                     'afterBegin',
-                    tpl_alert({
+                    alert({
                         'type': `alert-${type}`,
                         'message': message
                     })
@@ -97,7 +104,7 @@ converse.plugins.add('converse-modal', {
             },
 
             toHTML () {
-                return tpl_prompt(Object.assign({__}, this.model.toJSON()));
+                return prompt_modal(this.model.toJSON());
             },
 
             afterRender () {
@@ -121,7 +128,7 @@ converse.plugins.add('converse-modal', {
 
         _converse.Prompt = _converse.Confirm.extend({
             toHTML () {
-                return tpl_prompt(Object.assign({__}, this.model.toJSON()));
+                return prompt_modal(this.model.toJSON());
             },
 
             onConfimation (ev) {
@@ -159,7 +166,6 @@ converse.plugins.add('converse-modal', {
         let alert, prompt, confirm;
 
         Object.assign(_converse.api, {
-
             /**
              * Show a confirm modal to the user.
              * @method _converse.api.confirm

@@ -6,7 +6,6 @@ import { modal_close_button, modal_header_close_button } from "./buttons"
 
 
 const i18n_address = __('XMPP Address');
-const i18n_close = __('Close');
 const i18n_email = __('Email');
 const i18n_fingerprints = __('OMEMO Fingerprints');
 const i18n_full_name = __('Full Name');
@@ -16,7 +15,7 @@ const i18n_refresh = __('Refresh');
 const i18n_role = __('Role');
 const i18n_url = __('URL');
 const i18n_remove_contact = __('Remove as contact');
-const ii18n_trusted = __('Trusted');
+const i18n_trusted = __('Trusted');
 const i18n_untrusted = __('Untrusted');
 const i18n_no_devices = __("No OMEMO-enabled devices found");
 
@@ -27,7 +26,7 @@ const avatar_data = {
 
 
 const device_fingerprint = (o) => {
-    if (device.get('bundle') && device.get('bundle').fingerprint) {
+    if (o.device.get('bundle') && o.device.get('bundle').fingerprint) {
         return html`
             <li class="list-group-item">
                 <form class="fingerprint-trust">
@@ -66,30 +65,28 @@ const remove_button = html`<button type="button" class="btn btn-danger remove-co
 
 
 export default (o) => html`
-    <div class="modal" id="user-details-modal" tabindex="-1" role="dialog" aria-labelledby="user-details-modal-label" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="user-details-modal-label">${o.display_name}</h5>
-                    ${modal_header_close_button}
-                </div>
-                <div class="modal-body">
-                    ${ o.image ? avatar(Object.assign(avatar_data, o)) : '' }
-                    ${ o.fullname ? html`<p><label>${i18n_full_name}:</label> ${o.fullname}</p>` : '' }
-                    <p><label>${i18n_address}:</label> <a href="xmpp:${o.jid}">${o.jid}</a></p>
-                    ${ o.nickname ? html`<p><label>${i18n_nickname}:</label> ${o.nickname}</p>` : '' }
-                    ${ o.url ? html`<p><label>${i18n_url}:</label> <a target="_blank" rel="noopener" href="${o.url}">${o.url}</a></p>` : '' }
-                    ${ o.email ? html`<p><label>${i18n_email}:</label> <a href="mailto:${o.email}">${o.email}</a></p>` : '' }
-                    ${ o.role ? html`<p><label>${i18n_role}:</label> ${o.role}</p>` : '' }
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="user-details-modal-label">${o.display_name}</h5>
+                ${modal_header_close_button}
+            </div>
+            <div class="modal-body">
+                ${ o.image ? avatar(Object.assign(avatar_data, o)) : '' }
+                ${ o.fullname ? html`<p><label>${i18n_full_name}:</label> ${o.fullname}</p>` : '' }
+                <p><label>${i18n_address}:</label> <a href="xmpp:${o.jid}">${o.jid}</a></p>
+                ${ o.nickname ? html`<p><label>${i18n_nickname}:</label> ${o.nickname}</p>` : '' }
+                ${ o.url ? html`<p><label>${i18n_url}:</label> <a target="_blank" rel="noopener" href="${o.url}">${o.url}</a></p>` : '' }
+                ${ o.email ? html`<p><label>${i18n_email}:</label> <a href="mailto:${o.email}">${o.email}</a></p>` : '' }
+                ${ o.role ? html`<p><label>${i18n_role}:</label> ${o.role}</p>` : '' }
 
-                    ${ (o._converse.pluggable.plugins['converse-omemo'].enabled(o._converse)) ? fingerprints(o) : '' }
-                </div>
-                <div class="modal-footer">
-                    ${modal_close_button}
-                    <button type="button" class="btn btn-info refresh-contact"><i class="fa fa-refresh"> </i>${i18n_refresh}</button>
-                    ${ (o.allow_contact_removal && o.is_roster_contact) ? remove_button : '' }
+                ${ (o._converse.pluggable.plugins['converse-omemo'].enabled(o._converse)) ? fingerprints(o) : '' }
+            </div>
+            <div class="modal-footer">
+                ${modal_close_button}
+                <button type="button" class="btn btn-info refresh-contact"><i class="fa fa-refresh"> </i>${i18n_refresh}</button>
+                ${ (o.allow_contact_removal && o.is_roster_contact) ? remove_button : '' }
 
-                </div>
             </div>
         </div>
     </div>

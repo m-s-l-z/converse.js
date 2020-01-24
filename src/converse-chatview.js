@@ -129,6 +129,7 @@ converse.plugins.add('converse-chatview', {
 
 
         _converse.UserDetailsModal = _converse.BootstrapModal.extend({
+            id: "user-details-modal",
 
             events: {
                 'click button.remove-contact': 'removeContact',

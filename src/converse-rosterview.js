@@ -58,6 +58,7 @@ converse.plugins.add('converse-rosterview', {
 
 
         _converse.AddContactModal = _converse.BootstrapModal.extend({
+            id: "add-contact-modal",
             events: {
                 'submit form': 'addContactFromForm'
             },
