@@ -1464,7 +1464,7 @@
             const show_modal_button = view.el.querySelector('.show-user-details-modal');
             show_modal_button.click();
             const modal = view.user_details_modal;
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
             let iq_stanza = await u.waitUntil(() => deviceListFetched(_converse, contact_jid));
             expect(Strophe.serialize(iq_stanza)).toBe(
                 `<iq from="romeo@montague.lit" id="${iq_stanza.getAttribute("id")}" to="mercutio@montague.lit" type="get" xmlns="jabber:client">`+
@@ -1481,7 +1481,7 @@
                         .c('list', {'xmlns': "eu.siacs.conversations.axolotl"})
                             .c('device', {'id': '555'});
             _converse.connection._dataRecv(test_utils.createRequest(stanza));
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
             iq_stanza = await u.waitUntil(() => bundleFetched(_converse, contact_jid, '555'));
             expect(Strophe.serialize(iq_stanza)).toBe(
                 `<iq from="romeo@montague.lit" id="${iq_stanza.getAttribute("id")}" to="mercutio@montague.lit" type="get" xmlns="jabber:client">`+

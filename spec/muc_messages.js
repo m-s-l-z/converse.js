@@ -430,7 +430,8 @@
                     'type': 'groupchat',
                     'id': msg_id,
                 }).c('body').t('But soft, what light through yonder airlock breaks?').tree());
-            await new Promise(resolve => view.once('messageInserted', resolve));
+
+            await u.waitUntil(() => view.el.querySelectorAll('.chat-msg').length);
             expect(view.el.querySelectorAll('.chat-msg').length).toBe(1);
             expect(view.el.querySelector('.chat-msg__text').textContent)
                 .toBe('But soft, what light through yonder airlock breaks?');

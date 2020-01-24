@@ -198,7 +198,7 @@
             const cbview = _converse.chatboxviews.get('controlbox');
             cbview.el.querySelector('.add-contact').click()
             const modal = _converse.rosterview.add_contact_modal;
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
             expect(modal.el.querySelector('form.add-xmpp-contact')).not.toBe(null);
 
             const input_jid = modal.el.querySelector('input[name="jid"]');
@@ -234,7 +234,7 @@
             expect(modal.jid_auto_complete).toBe(undefined);
             expect(modal.name_auto_complete).toBe(undefined);
 
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
             expect(modal.el.querySelector('form.add-xmpp-contact')).not.toBe(null);
             const input_jid = modal.el.querySelector('input[name="jid"]');
             input_jid.value = 'someone@montague.lit';
@@ -278,7 +278,7 @@
             const cbview = _converse.chatboxviews.get('controlbox');
             cbview.el.querySelector('.add-contact').click()
             const modal = _converse.rosterview.add_contact_modal;
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
 
             // We only have autocomplete for the name input
             expect(modal.jid_auto_complete).toBe(undefined);
@@ -348,7 +348,7 @@
             const cbview = _converse.chatboxviews.get('controlbox');
             cbview.el.querySelector('.add-contact').click()
             modal = _converse.rosterview.add_contact_modal;
-            await u.waitUntil(() => u.isVisible(modal.el.firstElementChild), 1000);
+            await u.waitUntil(() => u.isVisible(modal.el), 1000);
 
             expect(modal.jid_auto_complete).toBe(undefined);
             expect(modal.name_auto_complete).toBe(undefined);
