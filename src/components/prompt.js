@@ -16,6 +16,7 @@ export default (o) => html`
           </button>
         </div>
         <div class="modal-body">
+            <span class="modal-alert"></span>
             <form class="converse-form converse-form--modal confirm" action="#">
               <div class="form-group">
                   ${ o.messages.map(message => html`<p>${message}</p>`) }

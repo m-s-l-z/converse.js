@@ -25,6 +25,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body">
+                <span class="modal-alert"></span>
                 <form class="converse-form add-chatroom">
                     <div class="form-group">
                         <label for="chatroom">${o.label_room_address}:</label>

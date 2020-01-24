@@ -1,17 +1,15 @@
-// Converse.js
-// https://conversejs.org
-//
-// Copyright (c) 2013-2019, the Converse.js developers
-// Licensed under the Mozilla Public License (MPLv2)
 /**
  * @module converse-modal
+ * @copyright The Converse.js developers
+ * @license Mozilla Public License (MPLv2)
  */
-import bootstrap from "bootstrap.native";
-import converse from "@converse/headless/converse-core";
-import  { HTMLView } from 'skeletor.js/src/htmlview.js';
+import { HTMLView } from 'skeletor.js/src/htmlview.js';
 import { Model } from 'skeletor.js/src/model.js';
 import { isString } from "lodash";
-import alert from "components/alert.js";
+import bootstrap from "bootstrap.native";
+import converse from "@converse/headless/converse-core";
+import { render } from 'lit-html';
+import alert_component from "components/alert.js";
 import alert_modal from "components/alert_modal.js";
 import prompt_modal from "components/prompt.js";
 
@@ -66,14 +64,12 @@ converse.plugins.add('converse-modal', {
             },
 
             alert (message, type='primary') {
-                const body = this.el.querySelector('.modal-body');
-                body.insertAdjacentHTML(
-                    'afterBegin',
-                    alert({
-                        'type': `alert-${type}`,
-                        'message': message
-                    })
-                );
+                const body = this.el.querySelector('.modal-alert');
+                if (body === null) {
+                    log.error("Could not find a .modal-alert element in the modal to show an alert message in!");
+                    return;
+                }
+                render(alert_component({'type': `alert-${type}`, 'message': message}), body);
                 const el = body.firstElementChild;
                 setTimeout(() => {
                     u.addClass('fade-out', el);

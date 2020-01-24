@@ -26,6 +26,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body d-flex flex-column">
+                <span class="modal-alert"></span>
                 ${o.show_form ? form(o) : '' }
                 <ul class="available-chatrooms list-group"></ul>
             </div>

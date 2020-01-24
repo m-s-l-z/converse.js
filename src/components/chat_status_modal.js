@@ -10,6 +10,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body">
+                <span class="modal-alert"></span>
                 <form class="converse-form set-xmpp-status" id="set-xmpp-status">
                     <div class="form-group">
                         <div class="custom-control custom-radio">

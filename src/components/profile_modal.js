@@ -110,6 +110,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body">
+                <span class="modal-alert"></span>
                 ${o._converse.pluggable.plugins['converse-omemo'].enabled(o._converse) && navigation}
                 <div class="tab-content">
                     <div class="tab-pane active" id="profile-tabpanel" role="tabpanel" aria-labelledby="profile-tab">

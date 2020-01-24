@@ -19,6 +19,7 @@ export default (o) => html`
             </div>
             <form class="converse-form add-xmpp-contact">
                 <div class="modal-body">
+                    <span class="modal-alert"></span>
                     <div class="form-group add-xmpp-contact__jid">
                         <label class="clearfix" for="jid">${i18n_xmpp_address}:</label>
                         <div class="suggestion-box suggestion-box__jid">

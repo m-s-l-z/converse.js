@@ -54,6 +54,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body">
+                <span class="modal-alert"></span>
                 <div class="room-info">
                     <p class="room-info"><strong>${i18n_name}</strong>: ${o.name}</p>
                     <p class="room-info"><strong>${i18n_address}</strong>: ${o.jid}</p>

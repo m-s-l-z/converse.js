@@ -29,6 +29,7 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body">
+                <span class="modal-alert"></span>
                 <div class="container brand-heading-container">
                     <h6 class="brand-heading">Converse</h6>
                     <p class="brand-subtitle">${o.version_name}</p>

@@ -148,6 +148,8 @@ export default (o) => html`
                 ${modal_header_close_button}
             </div>
             <div class="modal-body d-flex flex-column">
+                <span class="modal-alert"></span>
+
                 <ul class="nav nav-pills justify-content-center">
                     <li role="presentation" class="nav-item">
                         <a class="nav-link active" id="roles-tab" href="#roles-tabpanel" aria-controls="roles-tabpanel" role="tab" data-toggle="tab">Roles</a>
